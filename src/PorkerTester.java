@@ -16,6 +16,7 @@ public class PorkerTester {
         Scanner stdIn = new Scanner(System.in);
         List<Cards> cards = Cards.newDeck();
         
+        int prank,crank;
         Player human = new HumanPlayer("human",100);
         Player cp = new ComputerPlayer("cp",100);
         Rule rule = new Rule();
@@ -37,7 +38,7 @@ public class PorkerTester {
                 break;
             hand.remove(hand.get(i-1));
         }while(human.getHands().size()>0);
-        
+
         System.out.println("引き直し");
         while(hand.size()<5){
             human.drawIn(cards);
@@ -45,12 +46,21 @@ public class PorkerTester {
 
         System.out.println(human.getName()+"の手札");
         hand.forEach(System.out::println);
-        System.out.println(rule.Judge(hand));
+        prank=rule.Judge(hand);
+        //System.out.println(rule.Judge(hand));
+        
         
        System.out.println(cp.getName()+"の手札");
         cphand.forEach(System.out::println);
-        System.out.println(rule.Judge(cphand));
-
+        crank=rule.Judge(cphand);
+        //System.out.println(rule.Judge(cphand));
+        
+        if(prank>crank)
+            System.out.println("あなたの勝ち");
+        else if(prank==crank)
+            System.out.println("引き分け");
+        else
+            System.out.println("あなたの負け");
     }
     
 }

@@ -16,7 +16,40 @@ public class Rule {
  
     
     private boolean pflag = false;
-    public String Judge(List<Cards> hand){ //役の判定
+    public int Judge(List<Cards> hand){ //役の判定
+
+        if (Somecard(hand)==4){
+            System.out.println("FourCard");
+            return 7;
+        }
+        if(Flash(hand)==true && Straight(hand)==true){//ストレートフラッシュの判定
+            System.out.println("Straightflush");
+            return 6;
+        }
+        if (Flash(hand)==true){
+            System.out.println("Flush");
+            return 5;           
+        }
+        if (Straight(hand)==true){
+            System.out.println("Straight");
+            return 4;
+        }
+        if (Somecard(hand)==3){
+            System.out.println("ThreeCard");
+            return 3;  
+        }
+         if (Pair(Pair(hand))!=null){
+            System.out.println("TwoPare");
+            return 2; 
+         }
+        if (pflag==true){
+            System.out.println("OnePare");
+            return 1; 
+        }
+        System.out.println("NOPare");
+            return 0; 
+    }
+    /*public String Judge(List<Cards> hand){ //役の判定
 
         if (Somecard(hand)==4)
             return "FourCard";
@@ -31,9 +64,9 @@ public class Rule {
          if (Pair(Pair(hand))!=null)
             return "TwoPare";
         if (pflag==true)
-            return "OnePare";
+            return "OnePare"; 
         return "NoPair";
-    }
+    }*/
     
 
     
