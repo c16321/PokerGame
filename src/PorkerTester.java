@@ -56,11 +56,11 @@ public class PorkerTester {
         //System.out.println(rule.Judge(cphand));
         
         if(prank>crank)
-            System.out.println("あなたの勝ち");
+            System.out.println(human.getName()+"の勝ち");
         else if(prank==crank)
             System.out.println("引き分け");
         else
-            System.out.println("あなたの負け");
+            System.out.println(cp.getName()+"の勝ち");
     }
     
 }
