@@ -20,6 +20,7 @@ public class PorkerTester {
         Player human = new HumanPlayer("human",100);
         Player cp = new ComputerPlayer("cp",100);
         Rule rule = new Rule();
+        Rule cprule =new Rule();
         
         for (int i = 0; i < 5; i++) {
             human.drawIn(cards);
@@ -46,13 +47,13 @@ public class PorkerTester {
 
         System.out.println(human.getName()+"の手札");
         hand.forEach(System.out::println);
-        prank=rule.Judge(hand);
+        prank=rule.judge(hand);
         //System.out.println(rule.Judge(hand));
         
         
        System.out.println(cp.getName()+"の手札");
         cphand.forEach(System.out::println);
-        crank=rule.Judge(cphand);
+        crank=cprule.judge(cphand);
         //System.out.println(rule.Judge(cphand));
         
         if(prank>crank)
